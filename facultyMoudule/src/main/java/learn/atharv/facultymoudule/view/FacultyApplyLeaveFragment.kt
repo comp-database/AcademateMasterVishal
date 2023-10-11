@@ -1,19 +1,57 @@
-package learn.atharv.facultymoudule
+package learn.atharv.facultymoudule.view
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import learn.atharv.facultymoudule.viewmodel.MainActivityViewModel
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import learn.atharv.facultymoudule.R
+import learn.atharv.facultymoudule.model.AcademateRepositoryFaculty
+import learn.atharv.facultymoudule.viewmodel.FacultyApplyLeaveViewModel
+import learn.atharv.facultymoudule.viewmodel.ViewmodelFactory
 
-class FacultyMainActivity : AppCompatActivity() {
-    private lateinit var viewModel: MainActivityViewModel
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_faculty_main)
-//        val repository = AcademateRepositoryFaculty()
-//        val viewModelFactory = ViewmodelFactory(repository)
+class FacultyApplyLeaveFragment : Fragment() {
+
+    companion object {
+        fun newInstance() = FacultyApplyLeaveFragment()
+    }
+
+    private lateinit var viewModel: FacultyApplyLeaveViewModel
+    private lateinit var repository: AcademateRepositoryFaculty
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Here You Have to initialize the ALl the things those are Initiate on Create
+        val view = inflater.inflate(R.layout.fragment_faculty_apply_leave, container, false)
+        repository = AcademateRepositoryFaculty()
+        val viewModelFactory = ViewmodelFactory(repository)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(FacultyApplyLeaveViewModel::class.java)
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.getFacultyLeaveData("223")
+        viewModel.FacultyData.observe(viewLifecycleOwner){Faculties->
+            Log.d("Faculty List", Faculties.toString())
+        }
+        viewModel.LeaveData.observe(viewLifecycleOwner){Leaves->
+            Log.d("Leave List", Leaves.toString())
+        }
+    }
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        // TODO: Use the ViewModel
+
+
+
 //        val availableLeaves = findViewById<Spinner>(R.id.spinner1)
 //        val alternates = findViewById<Spinner>(R.id.spinner2)
-//        viewModel = ViewModelProvider(this,viewModelFactory)[MainActivityViewModel::class.java]
 //        findViewById<Button>(R.id.submit).setOnClickListener {
 //            val uid : String = findViewById<EditText>(R.id.etUID).text.toString()
 //            viewModel.getFacultyLeaveData(uid)
@@ -57,8 +95,7 @@ class FacultyMainActivity : AppCompatActivity() {
 //                }else{
 //                    Log.d("Error", it.errorBody().toString())
 //                }
+//            }
+//        }
     }
 }
-//TODO : Maintain the data class array that will consist of all required parameters for the post request the leave
-//    }
-//}
