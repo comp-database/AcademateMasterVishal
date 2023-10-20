@@ -15,4 +15,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "AcademateMaster"
 include(":app")
-include(":facultyMoudule")
+include(":facultyModule")
+include(":hrMoudule")
+include(":studentMoudule")
+include(":hodMoudule")
+include(":admissionmodule")

@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context=".view.StudentProfileFragment"
+    android:id="@+id/drawer"
+    android:background="@drawable/background"
+    tools:openDrawer="start"
+    >
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nv_side_navigation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:menu="@menu/navigation_side_menu"
+        app:drawerLayoutCornerSize="32dp"
+        android:layout_gravity="start"
+        app:itemTextColor="@color/white"
+        app:itemIconTint="@color/white"
+        android:layout_marginBottom="80dp"
+        android:background="@android:color/transparent"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/tb_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@android:color/transparent"
+                >
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/ib_navigate_back"-->
+<!--                        android:layout_width="40dp"-->
+<!--                        android:layout_height="40dp"-->
+<!--                        android:background="@android:color/transparent"-->
+<!--                        android:src="@drawable/menu" />-->
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="Profile"
+                        android:textColor="@color/white"
+                        android:textSize="24sp" />
+                </LinearLayout>
+
+            </androidx.appcompat.widget.Toolbar>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fillViewport="true"
+                    android:fitsSystemWindows="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="32dp">
+
+                        <ImageView
+                            android:id="@+id/iv_profile_image"
+                            android:layout_width="140dp"
+                            android:layout_height="140dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="40dp" />
+
+                        <TextView
+                            android:id="@+id/tv_user_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="40dp"
+                            android:gravity="center"
+                            android:text="Vishal ugalmugale"
+                            android:textSize="32sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_user_clg_id"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:gravity="center"
+                            android:text="VU1F2122054"
+                            android:textSize="24sp" />
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="40dp"
+                            android:text="GR NO."
+                            android:textSize="28sp" />
+
+                        <TextView
+                            android:id="@+id/tv_user_gr_number"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="9077"
+                            android:textColor="@color/light_blue_text_color"
+                            android:textSize="22sp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@color/view_line_color" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="40dp"
+                            android:text="Caste"
+                            android:textSize="28sp" />
+
+                        <TextView
+                            android:id="@+id/tv_user_caste"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="OBC"
+                            android:textColor="@color/light_blue_text_color"
+                            android:textSize="22sp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@color/view_line_color" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="40dp"
+                            android:text="Branch"
+                            android:textSize="28sp" />
+
+                        <TextView
+                            android:id="@+id/tv_user_branch"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Computer Engineering"
+                            android:textColor="@color/light_blue_text_color"
+                            android:textSize="22sp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@color/view_line_color" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="40dp"
+                            android:text="Current Academic Year"
+                            android:textSize="28sp" />
+
+                        <TextView
+                            android:id="@+id/tv_user_current_academic_year"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="2023-2024"
+                            android:textColor="@color/light_blue_text_color"
+                            android:textSize="22sp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@color/view_line_color" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="40dp"
+                            android:text="Date Of Birth"
+                            android:textSize="28sp" />
+
+                        <TextView
+                            android:id="@+id/tv_user_dob"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="2023-2024"
+                            android:textColor="@color/light_blue_text_color"
+                            android:textSize="22sp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="40dp"
+                            android:background="@color/view_line_color" />
+
+                    </LinearLayout>
+
+                </ScrollView>
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

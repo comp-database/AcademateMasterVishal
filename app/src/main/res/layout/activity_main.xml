@@ -1,73 +1,240 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_root_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/background"
+    >
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="9dp"
-        android:text="click"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!--    <VideoView-->
+    <!--        android:id="@+id/video_view"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        -->
+    <!--        />-->
 
-    <!--    <androidx.cardview.widget.CardView-->
-    <!--        android:id="@+id/cardView"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="0dp"-->
-    <!--        android:layout_marginEnd="9dp"-->
-    <!--        android:layout_marginBottom="142dp"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/cardView3" />-->
+    <!--    <com.airbnb.lottie.LottieAnimationView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        app:lottie_rawRes="@raw/background_animation"-->
+    <!--        app:lottie_loop="true"-->
+    <!--        app:lottie_autoPlay="true"-->
+    <!--        />-->
 
-    <!--    <androidx.cardview.widget.CardView-->
-    <!--        android:id="@+id/cardView2"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="0dp"-->
-    <!--        android:layout_marginBottom="57dp"-->
-    <!--        app:layout_constraintBottom_toTopOf="@+id/cardView5"-->
-    <!--        app:layout_constraintEnd_toEndOf="@+id/button"-->
-    <!--        app:layout_constraintStart_toStartOf="@+id/cardView5"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/button" />-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:weightSum="6"
+        android:padding="24dp"
+        >
 
-    <!--    <androidx.cardview.widget.CardView-->
-    <!--        android:id="@+id/cardView3"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="0dp"-->
-    <!--        android:layout_marginBottom="53dp"-->
-    <!--        app:layout_constraintBottom_toTopOf="@+id/cardView"-->
-    <!--        app:layout_constraintEnd_toEndOf="@+id/cardView"-->
-    <!--        app:layout_constraintStart_toStartOf="@+id/cardView"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/cardView4" />-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight="5"
+            >
 
-    <!--    <androidx.cardview.widget.CardView-->
-    <!--        android:id="@+id/cardView4"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="0dp"-->
-    <!--        android:layout_marginBottom="73dp"-->
-    <!--        app:layout_constraintBottom_toTopOf="@+id/cardView3"-->
-    <!--        app:layout_constraintEnd_toEndOf="@+id/cardView3"-->
-    <!--        app:layout_constraintStart_toStartOf="@+id/cardView3"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/cardView5" />-->
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/academate_llogo_white"
+                />
 
-    <!--    <androidx.cardview.widget.CardView-->
-    <!--        android:id="@+id/cardView5"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="0dp"-->
-    <!--        android:layout_marginBottom="57dp"-->
-    <!--        app:layout_constraintBottom_toTopOf="@+id/cardView4"-->
-    <!--        app:layout_constraintEnd_toEndOf="@+id/cardView4"-->
-    <!--        app:layout_constraintStart_toStartOf="@+id/cardView4"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/cardView2" />-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Academate"
+                android:fontFamily="serif"
+                android:textSize="32sp"
+                android:textColor="@color/white"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Welcome"
+                android:fontFamily="serif"
+                android:textSize="24sp"
+                android:textColor="@color/white"
+                android:layout_marginTop="32dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Select the login option"
+                android:fontFamily="serif"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="32dp"
+                    android:weightSum="3"
+                    >
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/white"
+                            android:text="Student"
+                            android:textAlignment="center"
+                            />
+
+                        <ImageView
+                            android:id="@+id/iv_student"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/student"
+                            android:scaleType="center"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/white"
+                            android:text="Faculty"
+                            android:textAlignment="center"
+                            />
+
+                        <ImageView
+                            android:id="@+id/iv_faculty"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/facultylogo"
+                            android:scaleType="center"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/white"
+                            android:text="HOD"
+                            android:textAlignment="center"
+                            />
+
+                        <ImageView
+                            android:id="@+id/iv_hod"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/hodlogo"
+                            android:scaleType="center"
+                            />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:weightSum="3"
+                    android:layout_gravity="center"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/white"
+                            android:text="HR"
+                            android:textAlignment="center"
+                            />
+
+                        <ImageView
+                            android:id="@+id/iv_hr"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/hrlogo"
+                            android:scaleType="center"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/white"
+                            android:text="Alumni"
+                            android:textAlignment="center"
+                            />
+
+                        <ImageView
+                            android:id="@+id/iv_alumni"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/alumnilogo"
+                            android:scaleType="center"
+                            />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

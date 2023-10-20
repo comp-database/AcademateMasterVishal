@@ -1,0 +1,15 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Shape Drawable (Rounded Corners) -->
+    <item android:id="@+id/shapeItem">
+        <shape>
+            <solid android:color="#000000" /> <!-- Set your desired background color here -->
+            <corners android:bottomRightRadius="180dp"
+                android:bottomLeftRadius="180dp" /> <!-- Adjust the radius according to your desired shape -->
+        </shape>
+    </item>
+
+    <!-- Image Drawable -->
+    <item android:id="@+id/imageItem" android:drawable="@drawable/background" />
+
+</layer-list>

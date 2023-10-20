@@ -11,8 +11,12 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/admissionmodule" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/facultyMoudule" />
+            <option value="$PROJECT_DIR$/facultyModule" />
+            <option value="$PROJECT_DIR$/hodMoudule" />
+            <option value="$PROJECT_DIR$/hrMoudule" />
+            <option value="$PROJECT_DIR$/studentMoudule" />
           </set>
         </option>
       </GradleProjectSettings>

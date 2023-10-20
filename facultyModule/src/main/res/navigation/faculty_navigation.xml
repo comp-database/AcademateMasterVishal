@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/faculty_navigation"
+    app:startDestination="@id/facultyDashboardFragment">
+
+    <fragment
+        android:id="@+id/facultyDashboardFragment"
+        android:name="learn.atharv.facultymoudule.view.FacultyDashboardFragment"
+        android:label="fragment_faculty_dashboard"
+        tools:layout="@layout/fragment_faculty_dashboard">
+        <action
+            android:id="@+id/action_facultyDashboardFragment_to_facultyApplyLeaveFragment4"
+            app:destination="@id/facultyApplyLeaveFragment" />
+        <action
+            android:id="@+id/action_facultyDashboardFragment_to_facultyPunchRecordFragment"
+            app:destination="@id/facultyPunchRecordFragment" />
+        <action
+            android:id="@+id/action_facultyDashboardFragment_to_facultyHrUpdatedLeavesFragment"
+            app:destination="@id/facultyHrUpdatedLeavesFragment" />
+        <action
+            android:id="@+id/action_facultyDashboardFragment_to_facultyLeaveHistoryFragment2"
+            app:destination="@id/facultyLeaveHistoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/facultyApplyLeaveFragment"
+        android:name="learn.atharv.facultymoudule.view.FacultyApplyLeaveFragment"
+        android:label="fragment_faculty_apply_leave"
+        tools:layout="@layout/fragment_faculty_apply_leave" >
+        <action
+            android:id="@+id/action_facultyApplyLeaveFragment_to_facultyDashboardFragment3"
+            app:destination="@id/facultyDashboardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/facultyPunchRecordFragment"
+        android:name="learn.atharv.facultymoudule.view.FacultyPunchRecordFragment"
+        android:label="fragment_faculty_punch_record"
+        tools:layout="@layout/fragment_faculty_punch_record" >
+        <action
+            android:id="@+id/action_facultyPunchRecordFragment_to_facultyDashboardFragment3"
+            app:destination="@id/facultyDashboardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/facultyHrUpdatedLeavesFragment"
+        android:name="learn.atharv.facultymoudule.view.FacultyHrUpdatedLeavesFragment"
+        android:label="fragment_faculty_hr_updated_leaves"
+        tools:layout="@layout/fragment_faculty_hr_updated_leaves" >
+        <action
+            android:id="@+id/action_facultyHrUpdatedLeavesFragment_to_facultyDashboardFragment2"
+            app:destination="@id/facultyDashboardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/facultyLeaveHistoryFragment"
+        android:name="learn.atharv.facultymoudule.view.FacultyLeaveHistoryFragment"
+        android:label="fragment_faculty_leave_history"
+        tools:layout="@layout/fragment_faculty_leave_history" >
+        <action
+            android:id="@+id/action_facultyLeaveHistoryFragment_to_facultyDashboardFragment3"
+            app:destination="@id/facultyDashboardFragment" />
+    </fragment>
+</navigation>
