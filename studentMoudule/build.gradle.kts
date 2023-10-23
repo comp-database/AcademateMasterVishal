@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "learn.atharv.studentmoudule"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 30
@@ -32,14 +32,18 @@ android {
     }
     buildFeatures{
         viewBinding = true
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.1"
     }
 }
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.9.0")
+    implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.9.0")
+    implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.4")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.4")
@@ -58,4 +62,9 @@ dependencies {
     //Glide and Piccaso for image loading
     implementation ("com.github.bumptech.glide:glide:4.15.1")
     implementation ("com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0")
+
+    //Compose
+    implementation("androidx.compose.ui:ui-android:1.5.4")
+    implementation("androidx.compose.material3:material3:1.1.2")
+    debugImplementation("androidx.compose.ui:ui-tooling")
 }

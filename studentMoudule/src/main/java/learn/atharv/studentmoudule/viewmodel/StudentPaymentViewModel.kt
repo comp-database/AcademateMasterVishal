@@ -12,7 +12,7 @@ class StudentPaymentViewModel(context: Context) : ViewModel() {
     val repository = AcademateRepositoryStudent(context)
 
     val totalBalanceFeeStatus = MutableLiveData<feeStatus>()
-    val singleFeeHead = MutableLiveData<StudentSingleFeeDataResponse.StudentSingleFeeDataResponseItem?>()
+    val singleFeeHead = MutableLiveData<StudentSingleFeeDataResponse?>()
 
     fun totalANDbalanceFees() : MutableLiveData<feeStatus>{
         viewModelScope.launch {
@@ -32,11 +32,11 @@ class StudentPaymentViewModel(context: Context) : ViewModel() {
         return totalBalanceFeeStatus
     }
 
-    fun singleFeeHeads() : MutableLiveData<StudentSingleFeeDataResponse.StudentSingleFeeDataResponseItem?> {
+    fun singleFeeHeads() : MutableLiveData<StudentSingleFeeDataResponse?> {
         viewModelScope.launch{
             val response = repository.getSingleFeeData()
             if (response.isSuccessful){
-                val content = response.body()?.get(0)
+                val content = response.body()
                 singleFeeHead.value = content
             }
         }

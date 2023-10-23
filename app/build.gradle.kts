@@ -48,10 +48,16 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
+    //Convert response to csv and download
+    implementation ("com.opencsv:opencsv:5.5.2")
+
     implementation ("com.airbnb.android:lottie:4.1.0")
     implementation(project(":facultyModule"))
 
     implementation(project(":hrMoudule"))
     implementation(project(":studentMoudule"))
     implementation(project(":hodMoudule"))
+    implementation(project(":admissionModule"))
+
+
 }
