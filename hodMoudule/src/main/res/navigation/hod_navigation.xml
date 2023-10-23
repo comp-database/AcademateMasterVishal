@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/hod_navigation"
+    app:startDestination="@id/hodHomeFragment">
+
+    <fragment
+        android:id="@+id/hodHomeFragment"
+        android:name="learn.atharv.hodmoudule.view.HodHomeFragment"
+        android:label="fragment_hod_home"
+        tools:layout="@layout/fragment_hod_home" >
+        <action
+            android:id="@+id/action_hodHomeFragment_to_hodStudentListFragment"
+            app:destination="@id/hodStudentListFragment" />
+        <action
+            android:id="@+id/action_hodHomeFragment_to_hodFacultyListFragment"
+            app:destination="@id/hodFacultyListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/hodFacultyListFragment"
+        android:name="learn.atharv.hodmoudule.view.HodFacultyListFragment"
+        android:label="fragment_hod_faculty_list"
+        tools:layout="@layout/fragment_hod_faculty_list" />
+    <fragment
+        android:id="@+id/hodStudentListFragment"
+        android:name="learn.atharv.hodmoudule.view.HodStudentListFragment"
+        android:label="fragment_hod_student_list"
+        tools:layout="@layout/fragment_hod_student_list" />
+</navigation>

@@ -52,7 +52,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Academate"
-                android:fontFamily="serif"
                 android:textSize="32sp"
                 android:textColor="@color/white"
                 />
@@ -61,7 +60,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Welcome"
-                android:fontFamily="serif"
                 android:textSize="24sp"
                 android:textColor="@color/white"
                 android:layout_marginTop="32dp"
@@ -71,7 +69,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Select the login option"
-                android:fontFamily="serif"
                 android:textSize="18sp"
                 android:textColor="@color/white"
                 />

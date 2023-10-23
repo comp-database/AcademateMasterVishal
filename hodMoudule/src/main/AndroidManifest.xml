@@ -3,6 +3,12 @@
 
     <application>
         <activity
+            android:name=".view.FacultyListScreen"
+            android:exported="false" />
+        <activity
+            android:name=".view.StudentsListScreen"
+            android:exported="false" />
+        <activity
             android:name=".HodMainActivity"
             android:exported="false" />
         <activity

@@ -7,6 +7,7 @@
 
     <application>
         <activity
+            android:theme="@style/Base.Theme.AcademateMaster"
             android:name=".StudentMainScreen"
             android:exported="false"
             android:label="@string/title_activity_student_main_screen" />

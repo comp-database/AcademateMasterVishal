@@ -2,6 +2,7 @@ package learn.atharv.hodmoudule.model.api
 
 import android.content.Context
 import learn.atharv.hodmoudule.model.body.HodLoginBody
+import learn.atharv.hodmoudule.model.response.HodDepartmentIdResponse
 import learn.atharv.hodmoudule.model.response.HodFacultyApprovedLeavesResponse
 import learn.atharv.hodmoudule.model.response.HodLoginResponse
 import learn.atharv.hodmoudule.model.response.HodMyFacultiesResponse
@@ -62,5 +63,7 @@ class AcademateWebServiceHod(context: Context) {
         @GET("presentFaculty")
         suspend fun FacultyPresentCount() : Response<HodPresentFacultyCountResponse>
 
+        @GET("getDepartId")
+        suspend fun getDepartment(): Response<HodDepartmentIdResponse>
     }
 }
