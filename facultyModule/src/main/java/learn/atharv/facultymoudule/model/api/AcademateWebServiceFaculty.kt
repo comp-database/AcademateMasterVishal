@@ -33,7 +33,7 @@ class AcademateWebServiceFaculty {
 
     interface AcademateApi {
 
-        @POST("login")
+        @POST("api/login")
         suspend fun HandleLogin(@Body data : FacultyLoginData):Response<FacultyLoginResponse>
 
 

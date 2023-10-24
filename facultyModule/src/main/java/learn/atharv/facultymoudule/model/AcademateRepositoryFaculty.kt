@@ -15,14 +15,14 @@ class AcademateRepositoryFaculty(private val webService: AcademateWebServiceFacu
 
     suspend fun getBasicData(uid: String): String {
         val response = webService.api.getBasicData(uid)
-        if (response.isSuccessful){
+        if (response.isSuccessful) {
             return response.body()?.user?.name.toString()
-        }else{
+        } else {
             return response.errorBody().toString()
         }
     }
 
-    suspend fun getFacultyDashboardLeave(uid: String) : FacultyDashboardResponse.Leave? {
+    suspend fun getFacultyDashboardLeave(uid: String): FacultyDashboardResponse.Leave? {
         val response = webService.api.getFacultyDashboard(uid)
         if (response.isSuccessful) {
             val leaveList = response.body()?.leaveList
@@ -30,10 +30,10 @@ class AcademateRepositoryFaculty(private val webService: AcademateWebServiceFacu
                 return leaveList[0] // Return the first leave item
             }
         }
-        return null
+        return FacultyDashboardResponse.Leave(casualLeave = 0.2f, compensationLeave = 0, earnedLeave = 0, medicalLeave = 0, summerVacation = 0, winterVacation = 0)
     }
 
-    suspend fun getFacultyDashboardAlternate(uid: String) : List<FacultyDashboardResponse.Alternate>? {
+    suspend fun getFacultyDashboardAlternate(uid: String): List<FacultyDashboardResponse.Alternate> {
         val response = webService.api.getFacultyDashboard(uid)
         if (response.isSuccessful) {
             val alternateList = response.body()?.alternate
@@ -41,7 +41,7 @@ class AcademateRepositoryFaculty(private val webService: AcademateWebServiceFacu
                 return alternateList // Return the first leave item
             }
         }
-        return null
+        return listOf<FacultyDashboardResponse.Alternate>(FacultyDashboardResponse.Alternate(alternate = 0, appliedDate = "0", docLink = "0", facultyId = 0, fromDate = "0", halfFullDay = "0", leaveAppId = 0, leaveId = 0, lname = "0",name="0", noOfDays = 0, reason = "0", signedByHod = 0, signedByPrincipal = 0, status = 0, statusAlternate = 0, toDate = "0"))
     }
 
     suspend fun getFacultyLeaveData(uid: String): Response<FacultyLeaveDataResponse> {
@@ -62,11 +62,16 @@ class AcademateRepositoryFaculty(private val webService: AcademateWebServiceFacu
         return webService.api.getFacultyCancelledLeaves(uid)
     }
 
-    suspend fun getFacultyLeaveHistory(uid: String): Response<FacultyLeaveHistoryResponse> {
-        return webService.api.getFacultyLeaveHistory(uid)
+    suspend fun getFacultyLeaveHistory(uid: String): List<FacultyLeaveHistoryResponse.Leave>? {
+        val response = webService.api.getFacultyLeaveHistory(uid)
+        if (response.isSuccessful) {
+            val LeaveHistoryList = response.body()?.leave
+            if (!LeaveHistoryList.isNullOrEmpty()) {
+                return LeaveHistoryList // Return the first leave item
+            }
+        }
+        return null
     }
-
-
 
 
     // POST Requests ---->
@@ -95,10 +100,16 @@ class AcademateRepositoryFaculty(private val webService: AcademateWebServiceFacu
         )
     }
 
-    suspend fun HandleLogin(data : FacultyLoginData) : Response<FacultyLoginResponse>{
-        return webService.api.HandleLogin(data)
+    suspend fun postTakeCharge(
+        leave_app_id: Int,
+        status: Int
+    ): Response<FacultyBasicMesssageResponse> {
+        return webService.api.postFacultyTakeCharge(leave_app_id, status)
     }
 
+    suspend fun HandleLogin(data: FacultyLoginData): Response<FacultyLoginResponse> {
+        return webService.api.HandleLogin(data)
+    }
 
 
 }

@@ -1,0 +1,11 @@
+<!-- rounded_image_background.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background: Rounded rectangle shape -->
+    <item
+        android:drawable="@drawable/background"
+        android:gravity="center" />
+    <item android:drawable="@drawable/round_background" />
+
+    <!-- Image: Centered inside the rounded rectangle -->
+
+</layer-list>

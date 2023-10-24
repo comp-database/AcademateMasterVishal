@@ -20,3 +20,4 @@ data class FacultyPunchRecordResponse(
         val punchTypeId: String
     )
 }
+

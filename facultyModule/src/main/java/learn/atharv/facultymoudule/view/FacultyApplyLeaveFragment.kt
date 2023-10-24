@@ -28,7 +28,16 @@ import java.util.concurrent.TimeUnit
 
 class FacultyApplyLeaveFragment : Fragment() {
 
-    var to_date : String  = ""
+    var to_date: String = ""
+    var leave_id: Int = 1
+    var half_full_day = ""
+    var from_date = ""
+    var no_of_date: Double = 0.2
+    var alternate: Int = 2
+    var uid = ""
+    var doc = ""
+    var reason = ""
+
     companion object {
         fun newInstance() = FacultyApplyLeaveFragment()
     }
@@ -56,14 +65,14 @@ class FacultyApplyLeaveFragment : Fragment() {
         val alternates = view.findViewById<Spinner>(R.id.spinner2)
         val secondSelection = view.findViewById<Spinner>(R.id.spinner)
 
-        var leave_id: Int = 1
-        var half_full_day = ""
-        var from_date = ""
-        var no_of_date: Double = 0.2
-        var alternate: Int = 2
-        var uid = ""
-        var doc = ""
-        var reason = ""
+//        var leave_id: Int = 1
+//        var half_full_day = ""
+//        var from_date = ""
+//        var no_of_date: Double = 0.2
+//        var alternate: Int = 2
+//        var uid = ""
+//        var doc = ""
+//        var reason = ""
 
         viewModel.getFacultyLeaveData("2139")
         viewModel.FacultyLeaveDetailsResponse.observe(viewLifecycleOwner) {
@@ -87,20 +96,27 @@ class FacultyApplyLeaveFragment : Fragment() {
                             id: Long
                         ) {
                             val LeaveselectedItem = it.body()!!.leaveList[position].leaveId
-
-                            leave_id = LeaveselectedItem
+                            leave_id = LeaveselectedItem.toInt()
+                            Log.d("leaveId", leave_id.toString())
                             // Do something with the selected item, e.g., display a Toast
-                            Toast.makeText(
-                                requireContext(), "Selected: $LeaveselectedItem", Toast.LENGTH_SHORT
-                            ).show()
+//                            Toast.makeText(
+//                                requireContext(), "Selected: $LeaveselectedItem", Toast.LENGTH_SHORT
+//                            ).show()
                         }
 
                         override fun onNothingSelected(parentView: AdapterView<*>) {
                             // Do nothing when nothing is selected
-                            Toast.makeText(requireContext(), "Nothing Selected", Toast.LENGTH_SHORT)
-                                .show()
+//                            Toast.makeText(requireContext(), "Nothing Selected", Toast.LENGTH_SHORT)
+//                                .show()
                         }
                     }
+
+                val adapter2 = ArrayAdapter(requireContext(),
+                    android.R.layout.simple_spinner_item,
+                    it.body()!!.facultylist.map { facuty -> facuty.name })
+                adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                alternates.adapter = adapter2
+
                 alternates.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                     override fun onItemSelected(
                         parentView: AdapterView<*>, selectedItemView: View?, position: Int, id: Long
@@ -109,24 +125,19 @@ class FacultyApplyLeaveFragment : Fragment() {
                         // Do something with the selected item, e.g., display a Toast
 
                         alternate = FacultyselectedItem
-
-                        Toast.makeText(
-                            requireContext(), "Selected: $FacultyselectedItem", Toast.LENGTH_SHORT
-                        ).show()
+                        Log.d("alternate", alternate.toString())
+//                        Toast.makeText(
+//                            requireContext(), "Selected: $FacultyselectedItem", Toast.LENGTH_SHORT
+//                        ).show()
                     }
 
                     override fun onNothingSelected(parentView: AdapterView<*>) {
                         // Do nothing when nothing is selected
-                        Toast.makeText(requireContext(), "Nothing Selected", Toast.LENGTH_SHORT)
-                            .show()
+//                        Toast.makeText(requireContext(), "Nothing Selected", Toast.LENGTH_SHORT)
+//                            .show()
                     }
                 }
 
-                val adapter2 = ArrayAdapter(requireContext(),
-                    android.R.layout.simple_spinner_item,
-                    it.body()!!.facultylist.map { facuty -> facuty.name })
-                adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                alternates.adapter = adapter2
             } else {
                 Log.d("Error", it.errorBody().toString())
             }
@@ -146,20 +157,20 @@ class FacultyApplyLeaveFragment : Fragment() {
                 val selectedItem = selectionList[position]
 
                 half_full_day = selectedItem
+                Log.d("Half Full Day", half_full_day)
                 // Do something with the selected item, e.g., display a Toast
-                Toast.makeText(requireContext(), "Selected: $selectedItem", Toast.LENGTH_SHORT)
-                    .show()
+//                Toast.makeText(requireContext(), "Selected: $selectedItem", Toast.LENGTH_SHORT)
+//                    .show()
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>) {
                 // Do nothing when nothing is selected
-                Toast.makeText(requireContext(), "Nothing Selected", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(requireContext(), "Nothing Selected", Toast.LENGTH_SHORT).show()
             }
         }
 
 
         var fromDate: String = ""
-
         val fromdateDP = view.findViewById(R.id.fromDatedp) as ImageView
         fromdateDP.setOnClickListener {
             val calendar = Calendar.getInstance()
@@ -178,17 +189,18 @@ class FacultyApplyLeaveFragment : Fragment() {
 
                     // TODO : year-month-date for database insertion
                     fromDate =
-                        "${selectedDay}-${selectedMonth + 1}-${selectedYear}" // Date(selectedYear,selectedMonth,selectedDay)
+                        "${selectedYear}-${selectedMonth + 1}-${selectedDay}" // Date(selectedYear,selectedMonth,selectedDay)
                     from_date = fromDate
-
                 },
                 year, month, day
             )
-
             // Show the DatePickerDialog
             datePicker.show()
         }
-        println(fromDate)
+        Log.d("fromDate",from_date)
+
+
+
         var toDate: String = ""
         val todateDP = view.findViewById(R.id.toDatedp) as ImageView
         todateDP.setOnClickListener {
@@ -207,43 +219,49 @@ class FacultyApplyLeaveFragment : Fragment() {
                     view.findViewById<TextView>(R.id.toDatetv).text = selectedDate
 
 
-
                     // TODO : year-month-date
-                    toDate = "${selectedDay}-${selectedMonth + 1}-${selectedYear}"
+                    toDate = "${selectedYear}-${selectedMonth + 1}-${selectedDay}"
                     to_date = toDate
                     Log.d("ToDateold", toDate)
                 },
                 day, month, year
             )
-
             // Show the DatePickerDialog
             datePicker.show()
         }
+        Log.d("FromDate", from_date)
+        Log.d("ToDate", to_date)
+//        val numberOfDays = calculateDaysBetweenDates(from_date, to_date).toDouble()
 
-
-        println(toDate)
-        Log.d("FromDate",from_date)
-        Log.d("ToDate",to_date)
-        val numberOfDays = calculateDaysBetweenDates(fromDate, toDate).toDouble()
-
-        val currentDate = LocalDate.now()
-        val year = currentDate.year
-        val month = currentDate.monthValue
-        val day = currentDate.dayOfMonth
-
-        val validDays = calculateDaysBetweenDates(currentDate.toString(), toDate)
-        Log.d("No of days",numberOfDays.toString())
-        no_of_date = numberOfDays
-        Log.d("No of days",no_of_date.toString())
+//        val currentDate = LocalDate.now()
+//        val year = currentDate.year
+//        val month = currentDate.monthValue
+//        val day = currentDate.dayOfMonth
+//        val validDays = calculateDaysBetweenDates(currentDate.toString(), toDate)
+//        Log.d("No of days", numberOfDays.toString())
+//        no_of_date = numberOfDays
+//        Log.d("No of days", no_of_date.toString())
 
         var isAllow: Boolean = true
         // inside on click button
         view.findViewById<Button>(R.id.applyleavebtn).setOnClickListener {
+
+            Log.d("ft dates","$from_date $to_date")
+            val numberOfDays = calculateDaysBetweenDates(from_date, to_date).toDouble()
+            no_of_date = numberOfDays
+            Log.d("No of days", no_of_date.toString())
+
+            val currentDate = LocalDate.now()
+            Log.d("currentDate",currentDate.toString())
+            val validDays = calculateDaysBetweenDates(currentDate.toString(), to_date)
+            Log.d("valid",validDays.toString())
+
             if (no_of_date <= 0) {
                 Toast.makeText(requireContext(), "Please Enter Valid Dates", Toast.LENGTH_SHORT)
                     .show()
                 isAllow = false
             }
+
             if (validDays >= -2 && validDays <= 0) {
                 if (leave_id != 4) {
                     Toast.makeText(
@@ -263,7 +281,10 @@ class FacultyApplyLeaveFragment : Fragment() {
             //          err: "Only Medical leaves can be applied after consumption of leave",
             if (isAllow) {
                 reason = view.findViewById<EditText>(R.id.etReason).text.toString()
-                Log.d("POST BODY","$leave_id $half_full_day $from_date $to_date $reason $no_of_date $alternate")
+                Log.d(
+                    "POST BODY",
+                    "$leave_id $half_full_day $from_date $to_date $reason $no_of_date $alternate"
+                )
                 viewModel.postFacultyLeaveApplication(
                     leaveId = leave_id,
                     halfFullDay = half_full_day,
@@ -277,7 +298,7 @@ class FacultyApplyLeaveFragment : Fragment() {
                 )
                 viewModel.FacultyLeaveApplicationResponse.observe(viewLifecycleOwner) {
                     if (it.isSuccessful) {
-                        Log.d("Message",it.body()?.message.toString())
+                        Log.d("Message", it.body()?.message.toString())
                         findNavController().navigate(R.id.action_facultyApplyLeaveFragment_to_facultyDashboardFragment3)
                     } else {
                         Toast.makeText(
@@ -300,7 +321,7 @@ class FacultyApplyLeaveFragment : Fragment() {
 
     fun calculateDaysBetweenDates(startDate: String, endDate: String): Long {
         // Define a date format
-        val dateFormat = SimpleDateFormat("dd-MM-yyyy")
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd")
 
         try {
             // Parse the provided date strings into Date objects
@@ -309,7 +330,6 @@ class FacultyApplyLeaveFragment : Fragment() {
 
             // Calculate the difference in milliseconds
             val diffInMillis: Long = endDateObj.time - startDateObj.time
-
 
 
             // Convert milliseconds to days

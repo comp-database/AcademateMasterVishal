@@ -39,5 +39,9 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, AdmissionDashboard::class.java))
         }
 
+        binding.ivFaculty.setOnClickListener {
+            startActivity(Intent(this, FacultyMainActivity::class.java))
+        }
+
     }
 }

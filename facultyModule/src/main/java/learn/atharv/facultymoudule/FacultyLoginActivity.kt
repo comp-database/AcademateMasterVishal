@@ -3,23 +3,25 @@ package learn.atharv.facultymoudule
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.personal.common.SharedPreferencesManager
+import learn.atharv.facultymoudule.databinding.ActivityFacultyLoginBinding
 import learn.atharv.facultymoudule.model.body.FacultyLoginData
 
 class FacultyLoginActivity : AppCompatActivity() {
+    private lateinit var binding : ActivityFacultyLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_faculty_login)
-
+        binding=ActivityFacultyLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        val sharedPreferencesManager = SharedPreferencesManager(this)
         var uid : String = ""
         var isLogin : Boolean = false
         val viewModel = FacultyLoginViewModel()
-        findViewById<Button>(R.id.login).setOnClickListener {
-            val email = findViewById<EditText>(R.id.email).text.toString()
-            val password = findViewById<EditText>(R.id.password).text.toString()
+        binding.btnLogin.setOnClickListener {
+            val email = binding.etEmail.text.toString()
+            val password = binding.etPassword.text.toString()
             viewModel.postFacultyTokenLogin(FacultyLoginData(email,password))
             Log.d("email", email)
             Log.d("password", password)
@@ -27,6 +29,9 @@ class FacultyLoginActivity : AppCompatActivity() {
                 if(it.isSuccessful){
                     uid = it.body()?.uid.toString()
                     isLogin = it.body()!!.isLogin
+                    sharedPreferencesManager.saveString("uid", uid)
+                    sharedPreferencesManager.saveBoolean("isLogin",isLogin)
+                    sharedPreferencesManager.saveInt("userType",it.body()!!.userType)
 //                    token = it.body()?.token.toString()
 //                    Log.d("token", token)
                     val intent  = Intent(this , FacultyMainActivity::class.java)

@@ -2,11 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application>
+        <activity
+            android:name=".view.LeaveHistoryScreen"
+            android:exported="false" />
+        <activity
+            android:name=".view.ApplyLeaveScreen"
+            android:exported="false" />
         <activity
             android:name=".FacultyLoginActivity"
             android:exported="false"
-            android:theme="@style/Theme.AcademateMaster"/>
+            android:theme="@style/Theme.AcademateMaster" />
         <activity
             android:name=".FacultyMainActivity"
             android:exported="false"

@@ -10,7 +10,8 @@ data class FacultyDashboardResponse(
     val leaveList: List<Leave>,
     @SerializedName("used")
     val used: Any?
-) {
+)
+{
     data class Alternate(
         @SerializedName("alternate")
         val alternate: Int,
